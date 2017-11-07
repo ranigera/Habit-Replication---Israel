@@ -29,7 +29,10 @@ try
     path(path, 'functions');
     
     % define variables
-    var.country = input('***input*** USA (=1) or AUSTRALIA (=2): ' ); %
+    %---Rani
+    %var.country = input('***input*** USA (=1) or AUSTRALIA (=2): ' ); %
+    var.country = 3; % ISRAEL
+    %---
     var.real    = input('***input*** real experiment (=1) or testing (=0)?: '); % 1 = real experiment; 0 testing
     
     % get the response device index
@@ -63,7 +66,11 @@ try
         case 2 % Australia
             var.salty= input('***input*** SWEET REWARD (1=M&M, 2=maltesers; 3=skittles): ');
             var.sweet = input('***input*** SALTY REWARD (4=cashew, 5=doritos; 6=chips): ');
-            
+        %---Rani
+        case 3 % ISRAEL
+            var.salty= input('***input*** SWEET REWARD (1=M&M, 2=click, 3=skittles): ');
+            var.sweet = input('***input*** SALTY REWARD (4=cashew, 5=doritos, 6=tapuchips): ');
+        %---
     end
     
     % initialize task parameters
@@ -86,7 +93,7 @@ try
     
     images           = {var.sweetImage, var.saltyImage};
     names            = {'sweet', 'savory'};
-    questionX        = {var.sweetLabel; var.saltyLabel};
+    questionX        = {var.sweetLabelHebrew; var.saltyLabelHebrew};
     
     % Randomize the image list
     randomIndex     = randperm(length(images));
@@ -99,10 +106,10 @@ try
         if var.session == 1     %pleasantness ratings for snacks after tasting each snack (only in session 1)
             % --- by Rani
             %question = ['Please rate how pleasant the piece of ' char(questionX(i)) ' you just ate was'];
-            question = [1491 1512 1490 47 1497 32 1489 1489 1511 1513 1492 32 1506 1491 32 1499 1502 1492 32 1492 1497 1514 1492 32 1502 1492 1504 1492 32 1506 1489 1493 1512 1498 32 1495 1514 1497 1499 1514 32 1492 double(char(questionX(i))) 32 1513 1488 1499 1500 1514 32 1499 1512 1490 1506];
+            question = [1491 1512 1490 47 1497 32 1489 1489 1511 1513 1492 32 1506 1491 32 1499 1502 1492 32 1492 1497 1514 1492 32 1502 1492 1504 1492 32 1506 1489 1493 1512 1498 32 1495 1514 1497 1499 1514 32 1492 questionX{i} 32 1513 1488 1499 1500 1514 32 1499 1512 1490 1506];
         else                    %pleasantness ratings for snacks they haven't tasted before (session 2&3)
             %question = ['Please rate how pleasant you would find a piece of ' char(questionX(i)) ' right now'];
-            question = [1491 1512 1490 47 1497 32 1489 1489 1511 1513 1492 32 1506 1491 32 1499 1502 1492 32 1492 1497 1514 1492 32 1502 1492 1504 1492 32 1506 1489 1493 1512 1498 32 1495 1514 1497 1499 1514 32 double(char(questionX(i))) 32 1506 1499 1513 1497 1493];
+            question = [1491 1512 1490 47 1497 32 1489 1489 1511 1513 1492 32 1506 1491 32 1499 1502 1492 32 1492 1497 1514 1492 32 1502 1492 1504 1492 32 1506 1489 1493 1512 1498 32 1495 1514 1497 1499 1514 32 questionX{i} 32 1506 1499 1513 1497 1493];
         end
         
         %data.initialRatings.(names{i}) = likertScale(images{i}, question, [-5 -4 -3 -2 -1 0 1 2 3 4 5], var, 'very unpleasant', 'very pleasant');
@@ -286,7 +293,7 @@ try
    
     % --- Rani
     %message = ['This session you won: ' num2str(won_sweet) ' ' var.sweetLabel ' and ' num2str(won_salty) ' ' var.saltyLabel ' ' '(Please inform the investigator).' ];
-    message = [1489 1495 1500 1511 32 1494 1492 32 1494 1499 1497 1514 32 1489 58 32 double(num2str(won_sweet)) 32 double(var.sweetLabel) 32 1493 45 double(num2str(won_salty)) 32 double(var.saltyLabel) 32 40 1489 1489 1511 1513 1492 32 1506 1491 1499 1504 47 1497 32 1488 1514 32 1492 1504 1505 1497 1497 1503 41 46];
+    message = [1489 1495 1500 1511 32 1494 1492 32 1494 1499 1497 1514 32 1489 58 32 double(num2str(won_sweet)) 32 var.sweetLabelHebrew 32 1493 45 double(num2str(won_salty)) 32 var.saltyLabelHebrew 32 40 1489 1489 1511 1513 1492 32 1506 1491 1499 1504 47 1497 32 1488 1514 32 1492 1504 1505 1497 1497 1503 41 46];
     % 
     
     % Screen settings
@@ -342,10 +349,10 @@ try
             
             %--- Rani
             %question = ['When the fractal below was shown, was it more likely that a button press would result in a ' var.sweetLabel ' or a ' var.saltyLabel ' reward?'];
-            question = [1499 1488 1513 1512 32 1492 1514 1502 1493 1504 1492 32 1500 1502 1496 1492 32 1492 1493 1508 1497 1506 1492 44 32 1492 1488 1501 32 1492 1497 1492 32 1505 1489 1497 1512 32 1497 1493 1514 1512 32 1513 1500 1495 1497 1510 1514 32 1499 1508 1514 1493 1512 32 1514 1493 1489 1497 1500 32 1500 1490 1502 1493 1500 32 1513 1500 32 double(var.sweetLabel) 32 1488 1493 32 1513 1500 32 double(var.saltyLabel) 63];
+            question = [1499 1488 1513 1512 32 1492 1514 1502 1493 1504 1492 32 1500 1502 1496 1492 32 1492 1493 1508 1497 1506 1492 44 32 1492 1488 1501 32 1492 1497 1492 32 1505 1489 1497 1512 32 1497 1493 1514 1512 32 1513 1500 1495 1497 1510 1514 32 1499 1508 1514 1493 1512 32 1514 1493 1489 1497 1500 32 1500 1490 1502 1493 1500 32 1513 1500 32 var.sweetLabelHebrew 32 1488 1493 32 1513 1500 32 var.saltyLabelHebrew 63];
             
                 %data.contingencyTest.(names{i}) = likertScale(images{i}, question, [-5 -4 -3 -2 -1 0 1 2 3 4 5], var, [var.sweetLabel ' more likely'], [var.saltyLabel  ' more likely']);
-                data.contingencyTest.(names{i}) = likertScale(images{i}, question, [-5 -4 -3 -2 -1 0 1 2 3 4 5], var, [double(var.sweetLabel) 32 1505 1489 1497 1512 32 1497 1493 1514 1512], [double(var.saltyLabel) 32 1505 1489 1497 1512 32 1497 1493 1514 1512]);
+                data.contingencyTest.(names{i}) = likertScale(images{i}, question, [-5 -4 -3 -2 -1 0 1 2 3 4 5], var, [var.sweetLabelHebrew 32 1505 1489 1497 1512 32 1497 1493 1514 1512], [var.saltyLabelHebrew 32 1505 1489 1497 1512 32 1497 1493 1514 1512]);
             %---
                 
             % recode the rating so that the higher = the more accurate for both
@@ -401,7 +408,7 @@ try
         
         images           = {var.sweetImage, var.saltyImage};
         names            = {'sweet', 'salty'};
-        questionX        = {var.sweetLabel; var.saltyLabel};
+        questionX        = {var.sweetLabelHebrew; var.saltyLabelHebrew};
         
         % Randomize the image list
         randomIndex      = randperm(length(images));
@@ -413,7 +420,7 @@ try
             
             %--- Rani
             %question = ['Please rate how pleasant you would find a piece of ' char(questionX(i)) ' right now'];
-            question = [1491 1512 1490 47 1497 32 1489 1489 1511 1513 1492 32 1506 1491 32 1499 1502 1492 32 1492 1497 1514 1492 32 1502 1492 1504 1492 32 1506 1489 1493 1512 1498 32 1495 1514 1497 1499 1514 32 double(char(questionX(i))) 32 1506 1499 1513 1497 1493];
+            question = [1491 1512 1490 47 1497 32 1489 1489 1511 1513 1492 32 1506 1491 32 1499 1502 1492 32 1492 1497 1514 1492 32 1502 1492 1504 1492 32 1506 1489 1493 1512 1498 32 1495 1514 1497 1499 1514 32 questionX{i} 32 1506 1499 1513 1497 1493];
 
             %data.finalRatings.(names{i}) = likertScale(images{i}, question, [-5 -4 -3 -2 -1 0 1 2 3 4 5], var, 'very unpleasant', 'very pleasant');
             data.finalRatings.(names{i}) = likertScale(images{i}, question, [-5 -4 -3 -2 -1 0 1 2 3 4 5], var, [1502 1488 1491 32 1500 1488 32 1502 1492 1504 1492], [1502 1488 1491 32 1502 1492 1504 1492]);

@@ -153,6 +153,94 @@ switch var.country
                 
         end
         
+        %---Rani
+    case 3 %ISRAEL
+        
+        % SWEET OPTION
+        switch var.sweet
+            
+            case 1  % case participant likes M&Ms the most
+                [var.sweetImage, ~, alpha] = imread('images/MM.png');
+                var.sweetImage(:,:,4) = alpha;
+                var.sweetLabel = 'M&Ms';
+                var.sweetLabelHebrew = [77 38 77];
+                
+            case 2 % case participant likes malters the most
+                [var.sweetImage, ~, alpha] = imread('images/Click.png');
+                var.sweetImage(:,:,4) = alpha;
+                var.sweetLabel = 'Click';
+                var.sweetLabelHebrew = [1511 1500 1497 1511];
+                
+            case 3  % case participant likes skittles the most
+                [var.sweetImage, ~, alpha] = imread('images/skittles.png');
+                var.sweetImage(:,:,4) = alpha;
+                var.sweetLabel = 'Skittles';
+                var.sweetLabelHebrew = [1505 1511 1497 1496 1500 1505];
+                var.saltyLabelHebrew = [];
+                
+            case 4 % case participant likes  cashews the most
+                [var.saltyImage, ~, alpha] = imread('images/cashew.png');
+                var.saltyImage(:,:,4) = alpha;
+                var.saltyLabel = 'Cashews';
+                var.saltyLabelHebrew = [1511 1513 1497 1493];
+
+            case 5 % case participant likes doritos the most
+                [var.saltyImage, ~, alpha] = imread('images/doritos.png');
+                var.saltyImage(:,:,4) = alpha;
+                var.saltyLabel = 'Doritos';
+                var.saltyLabelHebrew = [1491 1493 1512 1497 1496 1493 1505];
+                
+            case 6 % case participant likes chips it the most
+                [var.saltyImage, ~, alpha] = imread('images/TapuChips.png');
+                var.saltyImage(:,:,4) = alpha;
+                var.saltyLabel = 'Tapuchips';
+                var.saltyLabelHebrew = [1514 1508 1493 1510 39 1497 1508 1505];
+                
+        end
+        
+        
+        
+        % SALTY OPTION
+        switch var.salty
+            
+            case 1  % case participant likes M&Ms the most
+                [var.sweetImage, ~, alpha] = imread('images/MM.png');
+                var.sweetImage(:,:,4) = alpha; % set background of the png as transparent
+                var.sweetLabel = 'M&Ms';
+                var.sweetLabelHebrew = [77 38 77];
+                
+            case 2 % case participant likes malters the most
+                [var.sweetImage, ~, alpha] = imread('images/Click.png');
+                var.sweetImage(:,:,4) = alpha;
+                var.sweetLabel = 'Click';
+                var.sweetLabelHebrew = [1511 1500 1497 1511];
+                
+            case 3  % case participant likes skittles the most
+                [var.sweetImage, ~, alpha] = imread('images/skittles.png');
+                var.sweetImage(:,:,4) = alpha;
+                var.sweetLabel = 'Skittles';
+                var.sweetLabelHebrew = [1505 1511 1497 1496 1500 1505];
+                
+            case 4 % case participant likes  cashew the most
+                [var.saltyImage, ~, alpha] = imread('images/cashew.png');
+                var.saltyImage(:,:,4) = alpha;
+                var.saltyLabel = 'Cashews';
+                var.saltyLabelHebrew = [1511 1513 1497 1493];
+                
+            case 5 % case participant likes doritos the most
+                [var.saltyImage, ~, alpha] = imread('images/doritos.png');
+                var.saltyImage(:,:,4) = alpha;
+                var.saltyLabel = 'Doritos';
+                var.saltyLabelHebrew = [1491 1493 1512 1497 1496 1493 1505];
+                
+            case 6 % case participant likes  chipit the most
+                [var.saltyImage, ~, alpha] = imread('images/TapuChips.png');
+                var.saltyImage(:,:,4) = alpha;
+                var.saltyLabel = 'Tapuchips';
+                var.saltyLabelHebrew = [1514 1508 1493 1510 39 1497 1508 1505];
+                
+        end
+        %---
         
 end
 
